@@ -101,13 +101,7 @@ export default function Home() {
                             individual, occasionally of a small group, and often
                             covered a single subject or topic
                         </p>
-                        {/* <button
-                            className="rounded-full px-6 py-2 bg-blue-600 text-white mt-6 
-                        hover:bg-blue-700 transition-all duration-300 shadow-md"
-                            onClick={() => setIsModalOpen(true)}
-                        >
-                            + Add Blog
-                        </button> */}
+
                         <button
                             className="rounded-full px-6 py-3 bg-blue-600 text-white mt-6 
         hover:bg-blue-700 hover:scale-105 transition-all duration-300 
@@ -118,12 +112,10 @@ export default function Home() {
                         </button>
                     </div>
                 </div>
-                {/* <div className="flex gap-6 p-4 flex-wrap min-w-[42rem]"> */}
-                {/* modified the above div  down below*/}
-                <div
-                    className="grid md:grid-cols-3 sm:grid-cols-2 gap-20 p-8 w-full 
-    max-w-screen-lg "
-                >
+                <div className="flex gap-6 p-4 flex-wrap min-w-[42rem]">
+                    {/* modified the above div  down below*/}
+                    {/* <div
+                    className="grid md:grid-cols-3 sm:grid-cols-2 gap-20 p-8 w-full  max-w-screen-lg "  > */}
                     {blogs.map((items, index) => (
                         <>
                             <Link
@@ -142,9 +134,7 @@ export default function Home() {
                                             width={800}
                                             height={500}
                                             priority
-                                            className="w-full
-                                    h-48
-                                    object-cover"
+                                            className="w-full h-48 object-cover"
                                         />
                                         <div className="p-4 text-center">
                                             <h1 className="m-3 text-center text-xl bold font-serif  text-gray-900">
