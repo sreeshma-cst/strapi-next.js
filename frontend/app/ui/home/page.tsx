@@ -21,40 +21,15 @@ interface Blog {
     };
 }
 
-// const data: Blog[] = [
-//     {
-//         title: "Hellooo-world",
-//         description:
-//             "gfdgffhjgjhfxfsghbmjnbmhnvcfgnbvfgdfdfgdhgjjhgjhghkgtrryyghjsgfdgfhnvafsdddh",
-//         image: "https://tse2.mm.bing.net/th?id=OIP.-vxFKC0NV1m0ptcNycBQfwHaEK&pid=Api&P=0&h=180",
-//     },
-//     {
-//         title: "Hellooo-world",
-//         description:
-//             "gfdgffhjgjhfxfsghbmjnbmhnvcfgnbvfgdfdfgdhgjcxbvgnhbmhjfgjfghjjghxffhdfhfg",
-//         image: "https://tse2.mm.bing.net/th?id=OIP.-vxFKC0NV1m0ptcNycBQfwHaEK&pid=Api&P=0&h=180",
-//     },
-//     {
-//         title: "Hellooo-world",
-//         description:
-//             "gfdgffhjgjhfxfsghbmjnbmhnvcfgnbvfgdfdfgdhgjbcvnvbmbngnhbmbjgcnvngvdfhfgjnj",
-//         image: "https://tse2.mm.bing.net/th?id=OIP.-vxFKC0NV1m0ptcNycBQfwHaEK&pid=Api&P=0&h=180",
-//     },
-//     {
-//         title: "Hellooo-world",
-//         description:
-//             "gfdgffhjgjhfxfsghbmjnbmhnvcfgnbvfgdfdfgdhgjxvcbfgfkgswetdrhfgjghkerrrgggdhkkj",
-//         image: "https://tse2.mm.bing.net/th?id=OIP.-vxFKC0NV1m0ptcNycBQfwHaEK&pid=Api&P=0&h=180",
-//     },
-// ];
-
 export default function Home() {
     const [blogs, setBlogs] = useState<Blog[]>([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     useEffect(() => {
         const fetchBlogs = async () => {
             try {
-                const res = await fetch("http://localhost:1337/api/blogs");
+                const res = await fetch(
+                    "http://localhost:1337/api/blogs?populate=imageUrl"
+                );
                 const data = await res.json();
 
                 if (data && data.data) {
@@ -162,7 +137,7 @@ export default function Home() {
                                 >
                                     <div className="w-[100%] ">
                                         <Image
-                                            src={items.imageUrl}
+                                            src={`http://localhost:1337${items.imageUrl.formats.thumbnail.url}`}
                                             alt={items.title || "Blog image"}
                                             width={800}
                                             height={500}

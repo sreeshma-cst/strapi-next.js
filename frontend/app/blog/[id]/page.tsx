@@ -16,7 +16,7 @@ export default function BlogPage() {
         const getData = async () => {
             try {
                 const res = await fetch(
-                    `http://localhost:1337/api/blogs/${params.id}`,
+                    `http://localhost:1337/api/blogs/${params.id}?populate=imageUrl`,
                     {
                         cache: "no-store",
                     }
@@ -25,13 +25,15 @@ export default function BlogPage() {
                 if (!res.ok) throw new Error("Blog not found");
 
                 const responseData = await res.json();
-                console.log("Fetched Blog Data:", responseData);
+                // console.log("Fetched Blog Data:", responseData);
+                console.log("IMAGE");
 
                 setBlog({
                     id: responseData.data.id,
                     title: responseData.data.Title,
                     description: responseData.data.Description,
-                    imageUrl: responseData.data.imageUrl || "/placeholder.jpg",
+                    imageUrl:
+                        responseData.data.imageUrl.url || "/placeholder.jpg",
                 });
                 setLoading(false);
             } catch (error) {
@@ -52,9 +54,10 @@ export default function BlogPage() {
             {/* Outer container to center content */}
             <div className="bg-white shadow-lg rounded-lg flex flex-col md:flex-row w-full max-w-4xl">
                 {/* Left section - Image */}
+
                 <div className="md:w-1/2 w-full">
                     <Image
-                        src={blog.imageUrl}
+                        src={`http://localhost:1337${blog.imageUrl}`}
                         alt={blog.title}
                         width={500}
                         height={300}

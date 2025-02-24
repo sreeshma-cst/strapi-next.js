@@ -55,10 +55,7 @@ const NewBlog = ({ onClose }) => {
 
             newFormData.append("description", formData.description);
             newFormData.append("imageUrl", formData.imageUrl);
-            // for (let [key, value] of newFormData.entries()) {
 
-            //     console.log(${key}: ${value});
-            // }
             console.log("NEWFORD", newFormData);
             let imageId = null;
 
@@ -84,19 +81,6 @@ const NewBlog = ({ onClose }) => {
 
             console.log("Sending Payload:", payload);
 
-            // const res = await axios
-            //     .post("http://localhost:1337/api/blogs", payload, {
-            //         headers: {
-            //             "Content-Type": "application/json",
-            //         },
-            //     })
-            //     .then((res) => {
-            //         console.log(res);
-            //         onClose();
-            //     })
-            //     .catch((error) => {
-            //         console.log(error);
-            //     });
             try {
                 const res = await axios.post(
                     "http://localhost:1337/api/blogs",
