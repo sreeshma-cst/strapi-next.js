@@ -42,6 +42,7 @@ export default function Home() {
                     }));
 
                     setBlogs(formattedBlogs);
+                    fetchBlogs();
                 }
             } catch (error) {
                 console.error("Error fetching blogs:", error);
