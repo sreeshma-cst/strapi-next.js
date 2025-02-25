@@ -129,7 +129,13 @@ export default function Home() {
                                 >
                                     <div className="w-[100%] ">
                                         <Image
-                                            src={`http://localhost:1337${items.imageUrl.formats.thumbnail.url}`}
+                                            // src={`http://localhost:1337${items.imageUrl.formats.thumbnail.url}`}
+                                            src={
+                                                items.imageUrl?.formats
+                                                    ?.thumbnail?.url
+                                                    ? `http://localhost:1337${items.imageUrl.formats.thumbnail.url}`
+                                                    : "/default-image.jpg" // Use a default image if `imageUrl` is null
+                                            }
                                             alt={items.title || "Blog image"}
                                             width={800}
                                             height={500}

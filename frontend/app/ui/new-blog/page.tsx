@@ -50,7 +50,7 @@ const NewBlog = ({ onClose }) => {
         console.log("B  8", title);
 
         if (Object.keys(validationErrors).length === 0) {
-            alert("Blog added successfully!");
+            // alert("Blog added successfully!");
             newFormData.append("title", formData.title);
 
             newFormData.append("description", formData.description);
